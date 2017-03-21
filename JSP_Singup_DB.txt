@@ -1,0 +1,73 @@
+CREATE TABLE `board` (
+  `num` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `title` varchar(20) NOT NULL,
+  `memo` varchar(20) NOT NULL,
+  `time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `hit` int(20) NOT NULL DEFAULT '0',
+  `ref` int(20) NOT NULL DEFAULT '0',
+  `indent` int(20) NOT NULL DEFAULT '0',
+  `step` int(20) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`num`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `course` (
+  `course_id` varchar(20) NOT NULL,
+  `title` varchar(20) NOT NULL,
+  `credits` int(11) NOT NULL,
+  `type` varchar(10) NOT NULL,
+  `years` varchar(10) NOT NULL DEFAULT '2015',
+  `term` int(2) NOT NULL DEFAULT '1',
+  `classroom` varchar(10) NOT NULL,
+  `nop` int(3) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`course_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `notice` (
+  `num` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `title` varchar(20) NOT NULL,
+  `memo` varchar(20) NOT NULL,
+  `time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `hit` int(20) NOT NULL DEFAULT '0',
+  `ref` int(20) NOT NULL DEFAULT '0',
+  `indent` int(20) NOT NULL DEFAULT '0',
+  `step` int(20) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`num`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `professor` (
+  `professor_id` varchar(20) NOT NULL,
+  `professor_name` varchar(20) NOT NULL,
+  `professor_address` varchar(50) NOT NULL,
+  `professor_phone` varchar(15) NOT NULL,
+  `professor_dept` varchar(20) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  PRIMARY KEY (`professor_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `student` (
+  `student_id` varchar(20) NOT NULL,
+  `student_name` varchar(20) NOT NULL,
+  `student_address` varchar(50) NOT NULL,
+  `student_phone` varchar(15) NOT NULL,
+  `tot_cred` int(11) DEFAULT '0',
+  `password` varchar(100) NOT NULL,
+  PRIMARY KEY (`student_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `takes` (
+  `student_id` varchar(20) NOT NULL,
+  `course_id` varchar(20) NOT NULL,
+  PRIMARY KEY (`student_id`,`course_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `teaches` (
+  `professor_id` varchar(20) NOT NULL,
+  `course_id` varchar(20) NOT NULL,
+  `p_nop` int(3) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`professor_id`,`course_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
